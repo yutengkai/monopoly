@@ -213,6 +213,7 @@ void go_sign();
 void train();
 void mario();
 void pikachu();
+void chest();
 int dice_rolling;
 int dice_x = 0;
 int dice_y = 0;
@@ -3261,20 +3262,12 @@ void houses()
 			glTranslatef(0.64, 0, 0);
 			train();
 			glTranslatef(0.64, 0, 0);
-			glPushMatrix();
-				glTranslatef(joint_ui_data->getDOF(Keyframe::HEAD), 0.0, 0.0);
-				glTranslatef(0.0, 0.0, 0.5 + sin(-90 + joint_ui_data->getDOF(Keyframe::HEAD)) / 2);
-				mario();
-			glPopMatrix();
+			
 			glTranslatef(0.64, 0, 0);
 			glColor3f(0.737255, 0.560784, 0.560784);
 			house();
 			glTranslatef(0.64, 0, 0);
-			glPushMatrix();
-				glTranslatef(joint_ui_data->getDOF(Keyframe::HEAD), 0.0, 0.0);
-				glTranslatef(0.0, 0.0, 0.5 + sin(-45 + joint_ui_data->getDOF(Keyframe::HEAD)) / 2);
-				pikachu();
-			glPopMatrix();
+			chest();
 			glTranslatef(0.64, 0, 0);
 			glColor3f(0.737255, 0.560784, 0.560784);
 			house();
@@ -3297,6 +3290,7 @@ void houses()
 			glColor3f(0.5, 1.0, 0.5);
 			house();
 			glTranslatef(0.64, 0, 0);
+			chest();
 			glTranslatef(0.64, 0, 0);
 			glColor3f(0.5, 1.0, 0.5);
 			house();
@@ -3343,6 +3337,7 @@ void houses()
 			glColor3f(0.90, 0.91, 0.98);
 			house();
 			glTranslatef(0.64, 0, 0);
+			chest();
 			glTranslatef(0.64, 0, 0);
 			glColor3f(0.90, 0.91, 0.98);
 			house();
@@ -12428,7 +12423,7 @@ void pikachu()
 {
 	glPushMatrix();
 	glRotatef(90, 1.0, 0.0, 0.0);
-	glTranslatef(-0.18, 0.0, 0.0);
+	glTranslatef(-0.16, 0.0, 0.0);
 	glPushMatrix();
 	glTranslatef(0.04, 0, 0.0);
 	glTranslatef(0.04, 0, 0.0);
@@ -18819,6 +18814,10303 @@ void pikachu()
 	glTranslatef(0.04, 0, 0.0);
 	glTranslatef(0.04, 0, 0.0);
 	glTranslatef(0.04, 0, 0.0);
+	glTranslatef(0.04, 0, 0.0);
+	glPopMatrix();
+	glTranslatef(0, 0.04, 0.0);
+	glPopMatrix();
+}
+
+void chest()
+{
+	glPushMatrix();
+	glTranslatef(0.0, 0.96, 0.0);
+	glRotatef(90, 1.0, 0.0, 0.0);
+	glTranslatef(-0.30, 0.0, 0.0);
+	glPushMatrix();
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glPopMatrix();
+	glTranslatef(0, 0.04, 0.0);
+	glPushMatrix();
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glPopMatrix();
+	glTranslatef(0, 0.04, 0.0);
+	glPushMatrix();
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glPopMatrix();
+	glTranslatef(0, 0.04, 0.0);
+	glPushMatrix();
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glPopMatrix();
+	glTranslatef(0, 0.04, 0.0);
+	glPushMatrix();
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glPopMatrix();
+	glTranslatef(0, 0.04, 0.0);
+	glPushMatrix();
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glPopMatrix();
+	glTranslatef(0, 0.04, 0.0);
+	glPushMatrix();
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glPopMatrix();
+	glTranslatef(0, 0.04, 0.0);
+	glPushMatrix();
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glPopMatrix();
+	glTranslatef(0, 0.04, 0.0);
+	glPushMatrix();
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glPopMatrix();
+	glTranslatef(0, 0.04, 0.0);
+	glPushMatrix();
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glPopMatrix();
+	glTranslatef(0, 0.04, 0.0);
+	glPushMatrix();
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glPopMatrix();
+	glTranslatef(0, 0.04, 0.0);
+	glPushMatrix();
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glPopMatrix();
+	glTranslatef(0, 0.04, 0.0);
+	glPushMatrix();
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glPopMatrix();
+	glTranslatef(0, 0.04, 0.0);
+	glPushMatrix();
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glPopMatrix();
+	glTranslatef(0, 0.04, 0.0);
+	glPushMatrix();
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.647059, 0.164706, 0.164706);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glPopMatrix();
+	glTranslatef(0, 0.04, 0.0);
+	glPushMatrix();
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(1.0, 0.5, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
+	glTranslatef(0.04, 0, 0.0);
+	glColor3f(0.0, 0.0, 0.0);
+	glBegin(GL_QUADS);
+	// draw front face
+	glNormal3f(0, 0, 1);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	// draw back face
+	glNormal3f(0, 0, -1);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	// draw face 0
+	glNormal3f(0.0, 0.04, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, 0.02, 0.32);
+	glVertex3f(-0.02, 0.02, 0.32);
+	// draw face 1
+	glNormal3f(0.04, 0.0, 0);
+	glVertex3f(0.02, 0.02, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(0.02, -0.02, 0.32);
+	glVertex3f(0.02, 0.02, 0.32);
+	// draw face 2
+	glNormal3f(0.0, -0.04, 0);
+	glVertex3f(0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glVertex3f(0.02, -0.02, 0.32);
+	// draw face 3
+	glNormal3f(-0.04, 0.0, 0);
+	glVertex3f(-0.02, -0.02, 0);
+	glVertex3f(-0.02, 0.02, 0);
+	glVertex3f(-0.02, 0.02, 0.32);
+	glVertex3f(-0.02, -0.02, 0.32);
+	glEnd();
 	glTranslatef(0.04, 0, 0.0);
 	glPopMatrix();
 	glTranslatef(0, 0.04, 0.0);

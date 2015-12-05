@@ -218,7 +218,8 @@ def draw(l, k):
                 print("\tglColor3f(1.0, 1.0, 1.0);")
                 d([[-k, k], [k,k], [k,-k], [-k, -k]],0.32)
             elif color == "r":
-                print("\tglColor3f(1.0, 0.0, 0.0);")
+                print("\tglColor3f(1.0, 0.5
+                      , 0.0);")
                 d([[-k, k], [k,k], [k,-k], [-k, -k]],0.32)
             elif color == "p":
                 print("\tglColor3f(0.737255, 0.560784, 0.560784);")
@@ -226,7 +227,7 @@ def draw(l, k):
             elif color == "y":
                 print("\tglColor3f(1.0, 1.0, 0.0);")
                 d([[-k, k], [k,k], [k,-k], [-k, -k]],0.32)
-            elif color == "r":
+            elif color == "o":
                 print("\tglColor3f(0.647059, 0.164706, 0.164706);")
                 d([[-k, k], [k,k], [k,-k], [-k, -k]],0.32)
             print("\tglTranslatef(" + str(k*2) + ", " + str(0) + ", 0.0);")
@@ -269,5 +270,24 @@ p.append("000bbbyybbbyyyb")
 p.append("000000bbbbbbbbb")
 p.append("000000000bb0000")
 
-draw(p, 0.02)
+box = []
+box.append("b"*16)
+box.append("r"+"o"*14+"b")
+box.append("robooooobbooobob")
+box.append("roooooorrbooooob")
+box.append("roooooorroooooob")
+box.append("rooooooobbooooob")
+box.append("roooooorrbooooob")
+box.append("roooooorrbbbooob")
+box.append("roooobborrrbooob")
+box.append("rooorrboorrbooob")
+box.append("rooorrboorrbooob")
+box.append("rooorrbbbrroooob")
+box.append("roooorrrrrooooob")
+box.append("roboooooooooobob")
+box.append("r"+"o"*14+"b")
+box.append("b"+"r"*14+"b")
+
+
+
 
