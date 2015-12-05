@@ -1,0 +1,112 @@
+REPORT
+
+Step 1 -- drawing each part of the penguin:
+
+I did not type the code of vertices' locatios line by line.
+
+Instead, to draw the penguin fast, I made up this python file to help me generating code.
+
+----python code----
+
+		z = 0.5
+
+		luf = [-0.5,  0.05, z]
+		ldf = [-0.5, 0, z]
+		ruf = [0, 0.1, z]
+		rdf = [0, 0, z]
+
+		lub = luf[:]
+		lub[2] = -lub[2]
+
+		ldb = ldf[:]
+		ldb[2] = -ldb[2]
+
+		rub = ruf[:]
+		rub[2] = -rub[2]
+
+		rdb = rdf[:]
+		rdb[2] = -rdb[2]
+
+		print("// draw front face")
+		print("glNormal3f(0, 0, 1);")
+		print("glVertex3f" + str(tuple(ldf))+ ";")
+		print("glVertex3f" + str(tuple(rdf))+ ";")
+		print("glVertex3f" + str(tuple(ruf))+ ";")
+		print("glVertex3f" + str(tuple(luf))+ ";")
+		print("// draw back face")
+		print("glNormal3f(0, 0, -1);")
+		print("glVertex3f" + str(tuple(rdb))+ ";")
+		print("glVertex3f" + str(tuple(ldb))+ ";")
+		print("glVertex3f" + str(tuple(lub))+ ";")
+		print("glVertex3f" + str(tuple(rub))+ ";")
+		print("// draw left face")
+		print("glNormal3f(-1, 0, 0);")
+		print("glVertex3f" + str(tuple(ldb))+ ";")
+		print("glVertex3f" + str(tuple(ldf))+ ";")
+		print("glVertex3f" + str(tuple(luf))+ ";")
+		print("glVertex3f" + str(tuple(lub))+ ";")
+		print("// draw right face")
+		print("glNormal3f(1, 0, 0);")
+		print("glVertex3f" + str(tuple(rdf))+ ";")
+		print("glVertex3f" + str(tuple(rdb))+ ";")
+		print("glVertex3f" + str(tuple(rub))+ ";")
+		print("glVertex3f" + str(tuple(ruf))+ ";")
+		print("// draw top")
+		print("glNormal3f(0, 1, 0);")
+		print("glVertex3f" + str(tuple(luf))+ ";")
+		print("glVertex3f" + str(tuple(ruf))+ ";")
+		print("glVertex3f" + str(tuple(rub))+ ";")
+		print("glVertex3f" + str(tuple(lub))+ ";")
+		print("// draw bottom")
+		print("glNormal3f(0, -1, 0);")
+		print("glVertex3f" + str(tuple(ldb))+ ";")
+		print("glVertex3f" + str(tuple(rdb))+ ";")
+		print("glVertex3f" + str(tuple(rdf))+ ";")
+		print("glVertex3f" + str(tuple(ldf))+ ";")
+
+----python code finish----
+
+What I do is only typing in how I want it looks like in the xy-plane, then the python will help me to generate the code in openGL.
+
+Step 2 -- combine each part in the penguin:
+
+I put the body into graph first.
+
+==> then move to the left side fo the body and draw the left arm.
+	
+	==> move to the bottom to the arm and draw the hand.
+
+==> do the same thing to the right wing.
+
+==> move to the top of the body and draw the head.
+
+	==> move to the front of the head and draw both part of the mouth.
+		(note that my starting point of both part of the mouth are the same. It is the bottom of the upper and the top of the lower.)
+
+==> move to the bottom of the body and draw the both legs same as drawing the arms.
+
+(Note for each arrow I mean pushing a matrix and parallel arrows means different matrices)
+
+Step 3 -- rendering:
+
+I use if statement to pick the way I need to rend the penguin.
+
+I write individual functions for each way of rend.
+
+In the first three render function I disabled the light.
+
+The first case I used the function glPolygonModel and set it as GL_LINE.
+
+In the second, forthand fifth case I set it as GL_FILL.
+
+Step 4 -- lighting
+
+I found the code about the lighting in the lecture slide.
+
+Then I found a cololr table about the RGBA by google.
+
+http://devernay.free.fr/cours/opengl/materials.html
+
+Step 5 -- keyframe
+
+Unfortunatly, I did not finish this part.
