@@ -3,3 +3,20 @@ The monopoly game report.
 Contributors : 
 	Yu Tengkai,
 	Andreas Kyprianou
+
+Part 1 -- Introduction to the game:
+
+This is a standard monopoly chess game board.
+
+We have:
+	- the main board divided into several blocks.
+	- small houses into different colors.
+	- condos representing the big companies.
+	- the “Question” (?) for the chance card drawing
+	- the jewellery chest
+	- a “GO” sign for the starting block.
+	- the jail
+
+There are two chess characters:
+	- Mario
+	- Pikachu
