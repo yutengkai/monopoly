@@ -32,16 +32,11 @@ public:
 	//
 	enum { ROOT_TRANSLATE_X, ROOT_TRANSLATE_Y, ROOT_TRANSLATE_Z,
 		   ROOT_ROTATE_X,    ROOT_ROTATE_Y,    ROOT_ROTATE_Z,
-		   HEAD,
-		   dice_x, dice_y, 
-		   L_SHOULDER_PITCH, L_SHOULDER_YAW,   L_SHOULDER_ROLL,
-		   R_HIP_PITCH,      R_HIP_YAW,        R_HIP_ROLL,
-		   L_HIP_PITCH,      L_HIP_YAW,        L_HIP_ROLL,
-		   BEAK,
-		   R_ELBOW,
-		   L_ELBOW,
-		   R_KNEE,
-		   L_KNEE,
+		   PLAYER1_X, PLAYER1_Y,
+		   PLAYER2_X, PLAYER2_Y,
+		   PLAYER3_X, PLAYER3_Y,
+		   PLAYER4_X, PLAYER4_Y,
+		   DICE_X, DICE_Y, 
 		   LIGHT_ANGLE,
 		   NUM_JOINT_ENUM };
 
