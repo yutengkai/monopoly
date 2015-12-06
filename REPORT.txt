@@ -46,3 +46,42 @@ frame works and files planing.
 We believe this project will let we both contribute
 equally and end up with a good representation of the monopoly
 game.
+
+Part 3 -- Modeling:
+
+Here come the trick how we build the 3D models.
+
+Since you can tell the actual function of each model in the main.cpp
+is super long (thousands of lines of code), we did not do the real 
+design in the cpp files, but in the python file instead.
+
+The first version of the cpp code generating file is the 
+“gene.py” which is Yu’s tool in the assignment two.
+
+But that turn to be weak in this big project, so we made 
+the second python file “lego.py”. 
+(we were making a lego toy simulator but we gave up).
+
+“lego.py” allows us we build the simple objects like the 
+house on the board, but it costs a lot of lines to init how
+the model will look like and it is hard to maintain.
+
+The final tool we used to build fancy characters like 
+Mario, Pikachu and the chest is the “3d.py”.
+
+This allows we draw the 8 bit graph in a super fast way 
+and represent it into a 3D version.
+
+“3d.py” transform each pixel of the 2D graph into a 3D bar,
+and the drawing function makes us able to easily define the
+colors and the size of our 3D object, and it is super easy 
+to maintain.
+
+Because the limit of the block size we can only have 2
+characters moving on the board.
+However if we want we can make much more (Nintendo)
+characters in our game.
+
+(Note the best part of these python function is that they handels
+the normal vectors for all faces, which is super convenient 
+for continuing lighting control.)
