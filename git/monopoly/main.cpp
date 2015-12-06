@@ -154,10 +154,10 @@ const float ROOT_ROTATE_Z_MIN    = -180.0;
 const float ROOT_ROTATE_Z_MAX    =  180.0;
 const float HEAD_MIN             = -180.0;
 const float HEAD_MAX             =  180.0;
-const float SHOULDER_PITCH_MIN   = -45.0;
-const float SHOULDER_PITCH_MAX   =  45.0;
-const float SHOULDER_YAW_MIN     = -45.0;
-const float SHOULDER_YAW_MAX     =  45.0;
+const float SHOULDER_PITCH_MIN   =  0.0;
+const float SHOULDER_PITCH_MAX   =  360.0;
+const float SHOULDER_YAW_MIN     =  0.0;
+const float SHOULDER_YAW_MAX     =  360.0;
 const float SHOULDER_ROLL_MIN    = -45.0;
 const float SHOULDER_ROLL_MAX    =  45.0;
 const float HIP_PITCH_MIN        = -45.0;
@@ -215,8 +215,6 @@ void mario();
 void pikachu();
 void chest();
 int dice_rolling;
-int dice_x = 0;
-int dice_y = 0;
 int is_rolling = 1;
 
 
@@ -544,23 +542,15 @@ void initGlui()
 
 
 	// Create controls to specify right arm
-	glui_panel = glui_joints->add_panel("Right arm");
+	glui_panel = glui_joints->add_panel("Dice");
 
-	glui_spinner = glui_joints->add_spinner_to_panel(glui_panel, "shoulder pitch:", GLUI_SPINNER_FLOAT, joint_ui_data->getDOFPtr(Keyframe::R_SHOULDER_PITCH));
+	glui_spinner = glui_joints->add_spinner_to_panel(glui_panel, "dice x:", GLUI_SPINNER_FLOAT, joint_ui_data->getDOFPtr(Keyframe::dice_x));
 	glui_spinner->set_float_limits(SHOULDER_PITCH_MIN, SHOULDER_PITCH_MAX, GLUI_LIMIT_CLAMP);
-	glui_spinner->set_speed(SPINNER_SPEED);
+	glui_spinner->set_speed(25 * SPINNER_SPEED);
 
-	glui_spinner = glui_joints->add_spinner_to_panel(glui_panel, "shoulder yaw:", GLUI_SPINNER_FLOAT, joint_ui_data->getDOFPtr(Keyframe::R_SHOULDER_YAW));
+	glui_spinner = glui_joints->add_spinner_to_panel(glui_panel, "dice y:", GLUI_SPINNER_FLOAT, joint_ui_data->getDOFPtr(Keyframe::dice_y));
 	glui_spinner->set_float_limits(SHOULDER_YAW_MIN, SHOULDER_YAW_MAX, GLUI_LIMIT_CLAMP);
-	glui_spinner->set_speed(SPINNER_SPEED);
-
-	glui_spinner = glui_joints->add_spinner_to_panel(glui_panel, "shoulder roll:", GLUI_SPINNER_FLOAT, joint_ui_data->getDOFPtr(Keyframe::R_SHOULDER_ROLL));
-	glui_spinner->set_float_limits(SHOULDER_ROLL_MIN, SHOULDER_ROLL_MAX, GLUI_LIMIT_CLAMP);
-	glui_spinner->set_speed(SPINNER_SPEED);
-
-	glui_spinner = glui_joints->add_spinner_to_panel(glui_panel, "elbow:", GLUI_SPINNER_FLOAT, joint_ui_data->getDOFPtr(Keyframe::R_ELBOW));
-	glui_spinner->set_float_limits(ELBOW_MIN, ELBOW_MAX, GLUI_LIMIT_CLAMP);
-	glui_spinner->set_speed(SPINNER_SPEED);
+	glui_spinner->set_speed(25 * SPINNER_SPEED);
 
 	// Create controls to specify left arm
 	glui_panel = glui_joints->add_panel("Left arm");
@@ -876,6 +866,7 @@ void display(void)
 		glTranslatef(joint_ui_data->getDOF(Keyframe::ROOT_TRANSLATE_X),
 					 joint_ui_data->getDOF(Keyframe::ROOT_TRANSLATE_Y),
 					 joint_ui_data->getDOF(Keyframe::ROOT_TRANSLATE_Z));
+
 		glRotatef(joint_ui_data->getDOF(Keyframe::ROOT_ROTATE_Y), 0.0, 1.0, 0.0);
 		glRotatef(joint_ui_data->getDOF(Keyframe::ROOT_ROTATE_X), 1.0, 0.0, 0.0);
 		glRotatef(joint_ui_data->getDOF(Keyframe::ROOT_ROTATE_Z), 0.0, 0.0, 1.0);
@@ -906,9 +897,8 @@ void display(void)
 
 		// bars
 		glPushMatrix();
-			glTranslatef(0, 0, 2);
-			glRotatef(15 * dice_x, 1.0, 0.0, 0.0);
-			glRotatef(15 * dice_y, 0.0, 1.0, 0.0);
+			glRotatef(joint_ui_data->getDOF(Keyframe::dice_x), 1.0, 0.0, 0.0);
+			glRotatef(joint_ui_data->getDOF(Keyframe::dice_y), 0.0, 1.0, 0.0);
 			dice();
 		glPopMatrix();
 		
