@@ -95,11 +95,23 @@ int renderStyle = WIREFRAME;			// README: the selected render style
 int animate_mode = 0;			// 0 = no anim, 1 = animate
 
 // Keyframe settings
-const char filenameKF[] = "keyframes.txt";	// file for loading / saving keyframes
+// there is a file storing keyframes for animating a dice roll
+// there is a file storing keyframes for each individual dice value
+// there is a file storing keyframes that will be used to move game pieces
+const char filenameKF[] = "keyframe-files/dice-rolling.txt";
+const char filenameDV[] = "keyframe-files/dice-values.txt";
+const char filenameMP[] = "keyframe-files/move-pieces.txt";
 
-Keyframe* keyframes;			// list of keyframes
+// lists of keyframes
+Keyframe* keyframes;
+Keyframe* diceValues;
+Keyframe* movePieces;
 
-int maxValidKeyframe   = 0;		// index of max VALID keyframe (in keyframe list)
+// indices of max VALID keyframe (in keyframe list)
+int maxValidKeyframe1   = 0;
+int maxValidKeyframe2   = 0;
+int maxValidKeyframe3   = 0;
+
 const int KEYFRAME_MIN = 0;
 const int KEYFRAME_MAX = 32;	// README: specifies the max number of keyframes
 
@@ -152,12 +164,8 @@ const float ROOT_ROTATE_Y_MIN    = -180.0;
 const float ROOT_ROTATE_Y_MAX    =  180.0;
 const float ROOT_ROTATE_Z_MIN    = -180.0;
 const float ROOT_ROTATE_Z_MAX    =  180.0;
-const float HEAD_MIN             = -180.0;
-const float HEAD_MAX             =  180.0;
-const float SHOULDER_PITCH_MIN   =  0.0;
-const float SHOULDER_PITCH_MAX   =  360.0;
-const float SHOULDER_YAW_MIN     =  0.0;
-const float SHOULDER_YAW_MAX     =  360.0;
+const float DICE_MIN   			 =  0.0;
+const float DICE_MAX   			 =  360.0;
 const float SHOULDER_ROLL_MIN    = -45.0;
 const float SHOULDER_ROLL_MAX    =  45.0;
 const float HIP_PITCH_MIN        = -45.0;
@@ -214,9 +222,11 @@ void train();
 void mario();
 void pikachu();
 void chest();
+void rollDiceButton();
+void loadKeyframesFromFileButton();
 int dice_rolling;
 int is_rolling = 1;
-
+int current_player = 1;
 
 // Image functions
 void writeFrame(char* filename, bool pgm, bool frontBuffer);
@@ -251,6 +261,8 @@ int main(int argc, char** argv)
     initGlui();
     initGl();
 
+    loadKeyframesFromFileButton();
+
     // Invoke the standard GLUT main event loop
     glutMainLoop();
 
@@ -264,6 +276,14 @@ void initDS()
 	keyframes = new Keyframe[KEYFRAME_MAX];
 	for( int i = 0; i < KEYFRAME_MAX; i++ )
 		keyframes[i].setID(i);
+
+	diceValues = new Keyframe[KEYFRAME_MAX];
+	for( int i = 0; i < KEYFRAME_MAX; i++ )
+		diceValues[i].setID(i);
+
+	movePieces = new Keyframe[KEYFRAME_MAX];
+	for( int i = 0; i < KEYFRAME_MAX; i++ )
+		movePieces[i].setID(i);
 
 	animationTimer = new Timer();
 	frameRateTimer = new Timer();
@@ -292,7 +312,90 @@ void initGlut(int argc, char** argv)
 	glutMotionFunc(motion);		// Call motion whenever mouse moves while button pressed
 }
 
+void movePiece(int dice_roll) {
+	float num_spaces = (dice_roll + 1) * 0.64f;
 
+	// set current_player's new position and advance to next player's turn
+	if (current_player == 1) {
+		float current_space = movePieces[0].getDOF(Keyframe::PLAYER1_X);
+		joint_ui_data->setDOF(Keyframe::PLAYER1_X, current_space - num_spaces);
+		movePieces[0].setDOF(Keyframe::PLAYER1_X, current_space - num_spaces);
+		current_player++;
+	} else if (current_player == 2) {
+		float current_space = movePieces[1].getDOF(Keyframe::PLAYER2_X);
+		joint_ui_data->setDOF(Keyframe::PLAYER2_X, current_space - num_spaces);
+		movePieces[1].setDOF(Keyframe::PLAYER2_X, current_space - num_spaces);
+		current_player++;
+	} else if (current_player == 3) {
+		float current_space = movePieces[2].getDOF(Keyframe::PLAYER3_X);
+		joint_ui_data->setDOF(Keyframe::PLAYER3_X, current_space - num_spaces);
+		movePieces[2].setDOF(Keyframe::PLAYER3_X, current_space - num_spaces);
+		current_player++;
+	} else if (current_player == 4) {
+		float current_space = movePieces[3].getDOF(Keyframe::PLAYER4_X);
+		joint_ui_data->setDOF(Keyframe::PLAYER4_X, current_space - num_spaces);
+		movePieces[3].setDOF(Keyframe::PLAYER4_X, current_space - num_spaces);
+		current_player = 1;
+	}
+	
+	// Sync the UI with the 'joint_ui_data' values
+	glui_joints->sync_live();
+	glui_keyframe->sync_live();
+
+	// Let the user know the values have been loaded
+	//sprintf(msg, "You moved %d spaces!", dice_roll + 1);
+	//status->set_text(msg);
+}
+
+// there is a keyframes file containing dice rolls that is loaded
+// when the program is initialized
+void stopRoll() {
+	// generates number between 0 and 5
+	int dice_roll = rand() % 6;
+
+	// Update the 'joint_ui_data' variable with the appropriate
+	// entry from the 'keyframes' array (the list of keyframes)
+	joint_ui_data->setDOF(Keyframe::DICE_X, diceValues[dice_roll].getDOF(Keyframe::DICE_X));
+	joint_ui_data->setDOF(Keyframe::DICE_Y, diceValues[dice_roll].getDOF(Keyframe::DICE_Y));
+
+	// Sync the UI with the 'joint_ui_data' values
+	glui_joints->sync_live();
+	glui_keyframe->sync_live();
+
+	sprintf(msg, "You rolled a %d!", dice_roll + 1);
+	status->set_text(msg);
+
+	movePiece(dice_roll);
+}
+
+// roll dice button handler.  Called when the "animate" button is pressed.
+void rollDiceButton(int)
+{
+  // synchronize variables that GLUT uses
+  glui_keyframe->sync_live();
+
+  // toggle animation mode and set idle function appropriately
+  if( animate_mode == 0 ) {
+	// start animation
+	frameRateTimer->reset();
+	animationTimer->reset();
+
+	animate_mode = 1;
+	GLUI_Master.set_glutIdleFunc(animate);
+
+	// Let the user know the animation is running
+	sprintf(msg, "Rolling... Click Stop when ready");
+	status->set_text(msg);
+  } else {
+	// stop animation
+	animate_mode = 0;
+	GLUI_Master.set_glutIdleFunc(NULL);
+
+	stopRoll();
+  }
+}
+
+/*
 // Load Keyframe button handler. Called when the "load keyframe" button is pressed
 void loadKeyframeButton(int)
 {
@@ -312,6 +415,7 @@ void loadKeyframeButton(int)
 	status->set_text(msg);
 }
 
+
 // Update Keyframe button handler. Called when the "update keyframe" button is pressed
 void updateKeyframeButton(int)
 {
@@ -324,59 +428,93 @@ void updateKeyframeButton(int)
 	///////////////////////////////////////////////////////////
 
 	// Get the keyframe ID from the UI
-	int keyframeID = 0;
+	int keyframeID = joint_ui_data->getID();
 
 	// Update the 'maxValidKeyframe' index variable
 	// (it will be needed when doing the interpolation)
+	maxValidKeyframe = keyframeID;
 
 	// Update the appropriate entry in the 'keyframes' array
 	// with the 'joint_ui_data' data
+	keyframes[keyframeID] = *joint_ui_data;
 
 	// Let the user know the values have been updated
 	sprintf(msg, "Status: Keyframe %d updated successfully", keyframeID);
 	status->set_text(msg);
 }
+*/
 
 // Load Keyframes From File button handler. Called when the "load keyframes from file" button is pressed
 //
 // ASSUMES THAT THE FILE FORMAT IS CORRECT, ie, there is no error checking!
 //
-void loadKeyframesFromFileButton(int)
+void loadKeyframesFromFileButton()
 {
 	// Open file for reading
-	FILE* file = fopen(filenameKF, "r");
-	if( file == NULL )
+	FILE* file1 = fopen(filenameKF, "r");
+	FILE* file2 = fopen(filenameDV, "r");
+	FILE* file3 = fopen(filenameMP, "r");
+	if( file1 == NULL || file2 == NULL || file3 == NULL )
 	{
-		sprintf(msg, "Status: Failed to open file %s", filenameKF);
+		sprintf(msg, "Status: Failed to open a file");
 		status->set_text(msg);
 		return;
 	}
 
+	// --------------- Dice Rolling Keyframe File ------------
+
 	// Read in maxValidKeyframe first
-	fscanf(file, "%d", &maxValidKeyframe);
+	fscanf(file1, "%d", &maxValidKeyframe1);
 
 	// Now read in all keyframes in the format:
 	//    id
 	//    time
 	//    DOFs
 	//
-	for( int i = 0; i <= maxValidKeyframe; i++ )
-	{
-		fscanf(file, "%d", keyframes[i].getIDPtr());
-		fscanf(file, "%f", keyframes[i].getTimePtr());
+	for( int i = 0; i <= maxValidKeyframe1; i++ ) {
+		fscanf(file1, "%d", keyframes[i].getIDPtr());
+		fscanf(file1, "%f", keyframes[i].getTimePtr());
 
 		for( int j = 0; j < Keyframe::NUM_JOINT_ENUM; j++ )
-			fscanf(file, "%f", keyframes[i].getDOFPtr(j));
+			fscanf(file1, "%f", keyframes[i].getDOFPtr(j));
 	}
 
 	// Close file
-	fclose(file);
+	fclose(file1);
+
+	// --------------- Dice Values Keyframe File ------------
+	
+	fscanf(file2, "%d", &maxValidKeyframe2);
+
+	for( int i = 0; i <= maxValidKeyframe2; i++ ) {
+		fscanf(file2, "%d", diceValues[i].getIDPtr());
+		fscanf(file2, "%f", diceValues[i].getTimePtr());
+
+		for( int j = 0; j < Keyframe::NUM_JOINT_ENUM; j++ )
+			fscanf(file2, "%f", diceValues[i].getDOFPtr(j));
+	}
+
+	fclose(file2);
+
+	// --------------- Move Pieces Keyframe File ------------
+
+	fscanf(file3, "%d", &maxValidKeyframe3);
+
+	for( int i = 0; i <= maxValidKeyframe3; i++ ) {
+		fscanf(file3, "%d", movePieces[i].getIDPtr());
+		fscanf(file3, "%f", movePieces[i].getTimePtr());
+
+		for( int j = 0; j < Keyframe::NUM_JOINT_ENUM; j++ )
+			fscanf(file3, "%f", movePieces[i].getDOFPtr(j));
+	}
+
+	fclose(file3);
 
 	// Let the user know the keyframes have been loaded
 	sprintf(msg, "Status: Keyframes loaded successfully");
 	status->set_text(msg);
 }
-
+/*
 // Save Keyframes To File button handler. Called when the "save keyframes to file" button is pressed
 void saveKeyframesToFileButton(int)
 {
@@ -475,7 +613,7 @@ void renderFramesToFileButton(int)
 	sprintf(msg, "Status: %d frame(s) rendered to file", numFrames);
 	status->set_text(msg);
 }
-
+*/
 // Quit button handler.  Called when the "quit" button is pressed.
 void quitButton(int)
 {
@@ -523,95 +661,21 @@ void initGlui()
 	glui_spinner->set_float_limits(ROOT_ROTATE_Z_MIN, ROOT_ROTATE_Z_MAX, GLUI_LIMIT_WRAP);
 	glui_spinner->set_speed(4 * SPINNER_SPEED);
 
-	// Create controls to specify head rotation
-	glui_panel = glui_joints->add_panel("Head");
-
-	glui_spinner = glui_joints->add_spinner_to_panel(glui_panel, "head:", GLUI_SPINNER_FLOAT, joint_ui_data->getDOFPtr(Keyframe::HEAD));
-	glui_spinner->set_float_limits(HEAD_MIN, HEAD_MAX, GLUI_LIMIT_CLAMP);
-	glui_spinner->set_speed(SPINNER_SPEED);
-
-	// Create controls to specify beak
-	glui_panel = glui_joints->add_panel("Beak");
-
-	glui_spinner = glui_joints->add_spinner_to_panel(glui_panel, "beak:", GLUI_SPINNER_FLOAT, joint_ui_data->getDOFPtr(Keyframe::BEAK));
-	glui_spinner->set_float_limits(BEAK_MIN, BEAK_MAX, GLUI_LIMIT_CLAMP);
-	glui_spinner->set_speed(SPINNER_SPEED);
-
 
 	glui_joints->add_column(false);
 
 
 	// Create controls to specify right arm
 	glui_panel = glui_joints->add_panel("Dice");
-
-	glui_spinner = glui_joints->add_spinner_to_panel(glui_panel, "dice x:", GLUI_SPINNER_FLOAT, joint_ui_data->getDOFPtr(Keyframe::dice_x));
-	glui_spinner->set_float_limits(SHOULDER_PITCH_MIN, SHOULDER_PITCH_MAX, GLUI_LIMIT_CLAMP);
+	glui_spinner = glui_joints->add_spinner_to_panel(glui_panel, "Dice x:", GLUI_SPINNER_FLOAT, joint_ui_data->getDOFPtr(Keyframe::DICE_X));
+	glui_spinner->set_float_limits(DICE_MIN, DICE_MAX, GLUI_LIMIT_WRAP);
 	glui_spinner->set_speed(25 * SPINNER_SPEED);
 
-	glui_spinner = glui_joints->add_spinner_to_panel(glui_panel, "dice y:", GLUI_SPINNER_FLOAT, joint_ui_data->getDOFPtr(Keyframe::dice_y));
-	glui_spinner->set_float_limits(SHOULDER_YAW_MIN, SHOULDER_YAW_MAX, GLUI_LIMIT_CLAMP);
+	glui_spinner = glui_joints->add_spinner_to_panel(glui_panel, "Dice y:", GLUI_SPINNER_FLOAT, joint_ui_data->getDOFPtr(Keyframe::DICE_Y));
+	glui_spinner->set_float_limits(DICE_MIN, DICE_MAX, GLUI_LIMIT_WRAP);
 	glui_spinner->set_speed(25 * SPINNER_SPEED);
 
-	// Create controls to specify left arm
-	glui_panel = glui_joints->add_panel("Left arm");
-
-	glui_spinner = glui_joints->add_spinner_to_panel(glui_panel, "shoulder pitch:", GLUI_SPINNER_FLOAT, joint_ui_data->getDOFPtr(Keyframe::L_SHOULDER_PITCH));
-	glui_spinner->set_float_limits(SHOULDER_PITCH_MIN, SHOULDER_PITCH_MAX, GLUI_LIMIT_CLAMP);
-	glui_spinner->set_speed(SPINNER_SPEED);
-
-	glui_spinner = glui_joints->add_spinner_to_panel(glui_panel, "shoulder yaw:", GLUI_SPINNER_FLOAT, joint_ui_data->getDOFPtr(Keyframe::L_SHOULDER_YAW));
-	glui_spinner->set_float_limits(SHOULDER_YAW_MIN, SHOULDER_YAW_MAX, GLUI_LIMIT_CLAMP);
-	glui_spinner->set_speed(SPINNER_SPEED);
-
-	glui_spinner = glui_joints->add_spinner_to_panel(glui_panel, "shoulder roll:", GLUI_SPINNER_FLOAT, joint_ui_data->getDOFPtr(Keyframe::L_SHOULDER_ROLL));
-	glui_spinner->set_float_limits(SHOULDER_ROLL_MIN, SHOULDER_ROLL_MAX, GLUI_LIMIT_CLAMP);
-	glui_spinner->set_speed(SPINNER_SPEED);
-
-	glui_spinner = glui_joints->add_spinner_to_panel(glui_panel, "elbow:", GLUI_SPINNER_FLOAT, joint_ui_data->getDOFPtr(Keyframe::L_ELBOW));
-	glui_spinner->set_float_limits(ELBOW_MIN, ELBOW_MAX, GLUI_LIMIT_CLAMP);
-	glui_spinner->set_speed(SPINNER_SPEED);
-
-
-	glui_joints->add_column(false);
-
-
-	// Create controls to specify right leg
-	glui_panel = glui_joints->add_panel("Right leg");
-
-	glui_spinner = glui_joints->add_spinner_to_panel(glui_panel, "hip pitch:", GLUI_SPINNER_FLOAT, joint_ui_data->getDOFPtr(Keyframe::R_HIP_PITCH));
-	glui_spinner->set_float_limits(HIP_PITCH_MIN, HIP_PITCH_MAX, GLUI_LIMIT_CLAMP);
-	glui_spinner->set_speed(SPINNER_SPEED);
-
-	glui_spinner = glui_joints->add_spinner_to_panel(glui_panel, "hip yaw:", GLUI_SPINNER_FLOAT, joint_ui_data->getDOFPtr(Keyframe::R_HIP_YAW));
-	glui_spinner->set_float_limits(HIP_YAW_MIN, HIP_YAW_MAX, GLUI_LIMIT_CLAMP);
-	glui_spinner->set_speed(SPINNER_SPEED);
-
-	glui_spinner = glui_joints->add_spinner_to_panel(glui_panel, "hip roll:", GLUI_SPINNER_FLOAT, joint_ui_data->getDOFPtr(Keyframe::R_HIP_ROLL));
-	glui_spinner->set_float_limits(HIP_ROLL_MIN, HIP_ROLL_MAX, GLUI_LIMIT_CLAMP);
-	glui_spinner->set_speed(SPINNER_SPEED);
-
-	glui_spinner = glui_joints->add_spinner_to_panel(glui_panel, "knee:", GLUI_SPINNER_FLOAT, joint_ui_data->getDOFPtr(Keyframe::R_KNEE));
-	glui_spinner->set_float_limits(KNEE_MIN, KNEE_MAX, GLUI_LIMIT_CLAMP);
-	glui_spinner->set_speed(SPINNER_SPEED);
-
-	// Create controls to specify left leg
-	glui_panel = glui_joints->add_panel("Left leg");
-
-	glui_spinner = glui_joints->add_spinner_to_panel(glui_panel, "hip pitch:", GLUI_SPINNER_FLOAT, joint_ui_data->getDOFPtr(Keyframe::L_HIP_PITCH));
-	glui_spinner->set_float_limits(HIP_PITCH_MIN, HIP_PITCH_MAX, GLUI_LIMIT_CLAMP);
-	glui_spinner->set_speed(SPINNER_SPEED);
-
-	glui_spinner = glui_joints->add_spinner_to_panel(glui_panel, "hip yaw:", GLUI_SPINNER_FLOAT, joint_ui_data->getDOFPtr(Keyframe::L_HIP_YAW));
-	glui_spinner->set_float_limits(HIP_YAW_MIN, HIP_YAW_MAX, GLUI_LIMIT_CLAMP);
-	glui_spinner->set_speed(SPINNER_SPEED);
-
-	glui_spinner = glui_joints->add_spinner_to_panel(glui_panel, "hip roll:", GLUI_SPINNER_FLOAT, joint_ui_data->getDOFPtr(Keyframe::L_HIP_ROLL));
-	glui_spinner->set_float_limits(HIP_ROLL_MIN, HIP_ROLL_MAX, GLUI_LIMIT_CLAMP);
-	glui_spinner->set_speed(SPINNER_SPEED);
-
-	glui_spinner = glui_joints->add_spinner_to_panel(glui_panel, "knee:", GLUI_SPINNER_FLOAT, joint_ui_data->getDOFPtr(Keyframe::L_KNEE));
-	glui_spinner->set_float_limits(KNEE_MIN, KNEE_MAX, GLUI_LIMIT_CLAMP);
-	glui_spinner->set_speed(SPINNER_SPEED);
+	glui_keyframe->add_button_to_panel(glui_panel, "Roll / Stop Dice", 0, rollDiceButton);
 
 
 	///////////////////////////////////////////////////////////
@@ -648,16 +712,13 @@ void initGlui()
 	// Add buttons to load and update keyframes
 	// Add buttons to load and save keyframes from a file
 	// Add buttons to start / stop animation and to render frames to file
-	glui_panel = glui_keyframe->add_panel("", GLUI_PANEL_NONE);
-	glui_keyframe->add_button_to_panel(glui_panel, "Load Keyframe", 0, loadKeyframeButton);
-	glui_keyframe->add_button_to_panel(glui_panel, "Load Keyframes From File", 0, loadKeyframesFromFileButton);
-	glui_keyframe->add_button_to_panel(glui_panel, "Start / Stop Animation", 0, animateButton);
-	glui_keyframe->add_column_to_panel(glui_panel, false);
-	glui_keyframe->add_button_to_panel(glui_panel, "Update Keyframe", 0, updateKeyframeButton);
-	glui_keyframe->add_button_to_panel(glui_panel, "Save Keyframes To File", 0, saveKeyframesToFileButton);
-	glui_keyframe->add_button_to_panel(glui_panel, "Render Frames To File", 0, renderFramesToFileButton);
-
-	glui_keyframe->add_separator();
+	//glui_panel = glui_keyframe->add_panel("", GLUI_PANEL_NONE);
+	//glui_keyframe->add_button_to_panel(glui_panel, "Load Keyframe", 0, loadKeyframeButton);
+	//glui_keyframe->add_button_to_panel(glui_panel, "Start / Stop Animation", 0, animateButton);
+	//glui_keyframe->add_column_to_panel(glui_panel, false);
+	//glui_keyframe->add_button_to_panel(glui_panel, "Update Keyframe", 0, updateKeyframeButton);
+	//glui_keyframe->add_button_to_panel(glui_panel, "Save Keyframes To File", 0, saveKeyframesToFileButton);
+	//glui_keyframe->add_button_to_panel(glui_panel, "Render Frames To File", 0, renderFramesToFileButton);
 
 	// Add status line
 	glui_panel = glui_keyframe->add_panel("");
@@ -719,7 +780,7 @@ Vector getInterpolatedJointDOFS(float time)
 	//    keyframes[i-1].getTime() < time <= keyframes[i].getTime()
 	//
 	int i = 0;
-	while( i <= maxValidKeyframe && keyframes[i].getTime() < time )
+	while( i <= maxValidKeyframe1 && keyframes[i].getTime() < time )
 		i++;
 
 	// If time is before or at first defined keyframe, then
@@ -729,8 +790,8 @@ Vector getInterpolatedJointDOFS(float time)
 
 	// If time is beyond last defined keyframe, then just
 	// use last keyframe pose
-	if( i > maxValidKeyframe )
-		return keyframes[maxValidKeyframe].getDOFVector();
+	if( i > maxValidKeyframe1 )
+		return keyframes[maxValidKeyframe1].getDOFVector();
 
 	// Need to normalize time to (0, 1]
 	float alpha = (time - keyframes[i-1].getTime()) / (keyframes[i].getTime() - keyframes[i-1].getTime());
@@ -819,7 +880,7 @@ void display(void)
 	{
 		float curTime = animationTimer->elapsed();
 
-		if( curTime >= keyframes[maxValidKeyframe].getTime() )
+		if( curTime >= keyframes[maxValidKeyframe1].getTime() )
 		{
 			// Restart the animation
 			animationTimer->reset();
@@ -879,6 +940,7 @@ void display(void)
 		glPushMatrix();
 		glTranslatef(0.0, 0.0, -2.0);
 		mono_table();
+
 		go_sign();
 		jail_four();
 		glPushMatrix();
@@ -893,12 +955,13 @@ void display(void)
 		
 		// buildings
 		houses();
+
 		glPopMatrix();
 
 		// bars
 		glPushMatrix();
-			glRotatef(joint_ui_data->getDOF(Keyframe::dice_x), 1.0, 0.0, 0.0);
-			glRotatef(joint_ui_data->getDOF(Keyframe::dice_y), 0.0, 1.0, 0.0);
+			glRotatef(joint_ui_data->getDOF(Keyframe::DICE_X), 1.0, 0.0, 0.0);
+			glRotatef(joint_ui_data->getDOF(Keyframe::DICE_Y), 0.0, 1.0, 0.0);
 			dice();
 		glPopMatrix();
 		
@@ -3252,7 +3315,6 @@ void houses()
 			glTranslatef(0.64, 0, 0);
 			train();
 			glTranslatef(0.64, 0, 0);
-			
 			glTranslatef(0.64, 0, 0);
 			glColor3f(0.737255, 0.560784, 0.560784);
 			house();
@@ -3261,6 +3323,16 @@ void houses()
 			glTranslatef(0.64, 0, 0);
 			glColor3f(0.737255, 0.560784, 0.560784);
 			house();
+			glTranslatef(0.64, 0, 0);
+
+			glTranslatef(joint_ui_data->getDOF(Keyframe::PLAYER1_X), 0.0, 0.0);
+			mario();
+			glTranslatef(-joint_ui_data->getDOF(Keyframe::PLAYER1_X), 0.0, 0.0);
+
+			glTranslatef(joint_ui_data->getDOF(Keyframe::PLAYER2_X), 0.0, 0.0);
+			pikachu();
+			glTranslatef(-joint_ui_data->getDOF(Keyframe::PLAYER2_X), 0.0, 0.0);
+		
 		glPopMatrix();
 
 		glPushMatrix();
