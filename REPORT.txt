@@ -20,3 +20,9 @@ We have:
 There are two chess characters:
 	- Mario
 	- Pikachu
+
+The users can let the dice roll to a random number,
+then the charaters will move automatically.
+
+(We cannot implement all the feature of the real game
+due to the time limit.)
