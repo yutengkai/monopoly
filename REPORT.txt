@@ -26,3 +26,23 @@ then the charaters will move automatically.
 
 (We cannot implement all the feature of the real game
 due to the time limit.)
+
+Part 2 -- Where we come up the idea.
+
+When we solving the assignment 2 (individually),
+we found some trick way to draw the 3D graph in open GL,
+which can make fancy characters in a fast way
+(like the Pikachu only cost us five to ten minute to draw).
+
+This tech (or trick) result in our decision to build a well
+designed 3D world in our final project.
+
+The idea of actually making the monopoly game is by 
+one of our group members girlfriend.
+
+Yu’s strength is model building while Andreas is a genius of 
+frame works and files planing.
+
+We believe this project will let we both contribute
+equally and end up with a good representation of the monopoly
+game.
