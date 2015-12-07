@@ -1,12 +1,12 @@
 The monopoly game report.
 
 Contributors : 
-	Yu Tengkai,
-	Andreas Kyprianou
+	Yu Tengkai - g3yuteng,
+	Andreas Kyprianou - g0kypria
 
 Part 1 -- Introduction to the game:
 
-This is a standard monopoly chess game board.
+This is a standard monopoly game board.
 
 We have:
 	- the main board divided into several blocks.
@@ -17,7 +17,7 @@ We have:
 	- a “GO” sign for the starting block.
 	- the jail
 
-There are two chess characters:
+There are two characters:
 	- Mario
 	- Pikachu
 
@@ -41,7 +41,7 @@ The idea of actually making the monopoly game is by
 one of our group members girlfriend.
 
 Yu’s strength is model building while Andreas is a genius of 
-frame works and files planing.
+keyframing and planning.
 
 We believe this project will let we both contribute
 equally and end up with a good representation of the monopoly
@@ -98,3 +98,23 @@ both frame and the joint_ui_data.
 Each time we stop the dice we rotate the angle by 0.1 of PI,
 but when the sun_angle becomes 1 we clears it since we do
 not need the view of the “town” in the night.
+
+Part 5 -- Keyframing
+
+We used keyframing in an interesting way. We decided to have 
+one keyframe file for the dice rolling animation, then one 
+keyframe file for each individual dice number, and then one 
+keyframe file that maintains the position of the characters. 
+
+The reasoning behind this is that we have a way to animate each 
+thing individually. However unfortunately due to time constraints 
+we were not able to implement smooth animations for the movement 
+of the players. They simply are placed in the position calculated 
+based on the dice value rolled. The dice however animates and rolls 
+and then one face is displayed facing upwards. This is the one that 
+determines how many places your player will move.
+
+Each block is 0.64 pixels wide and so each movement was calculated 
+using multiples of 0.64. There is a small bug still with movement 
+along the last side that we didn't have time to fix, but the players 
+can move properly according to their dice rolls along the first 3 sides.

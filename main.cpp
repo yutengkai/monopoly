@@ -1,33 +1,7 @@
 /***********************************************************
-             CSC418, FALL 2009
+             CSC418, FALL 2015
  
-                 penguin.cpp
-                 author: Mike Pratscher
-                 based on code by: Eron Steger, J. Radulovich
-
-		Main source file for assignment 2
-		Uses OpenGL, GLUT and GLUI libraries
-  
-    Instructions:
-        Please read the assignment page to determine 
-        exactly what needs to be implemented.  Then read 
-        over this file and become acquainted with its 
-        design. In particular, see lines marked 'README'.
-		
-		Be sure to also look over keyframe.h and vector.h.
-		While no changes are necessary to these files, looking
-		them over will allow you to better understand their
-		functionality and capabilites.
-
-        Add source code where it appears appropriate. In
-        particular, see lines marked 'TODO'.
-
-        You should not need to change the overall structure
-        of the program. However it should be clear what
-        your changes do, and you should use sufficient comments
-        to explain your code.  While the point of the assignment
-        is to draw and animate the character, you will
-        also be marked based on your design.
+Assignment 3 - Part B - Monopoly
 
 ***********************************************************/
 
@@ -166,25 +140,8 @@ const float ROOT_ROTATE_Z_MIN    = -180.0;
 const float ROOT_ROTATE_Z_MAX    =  180.0;
 const float DICE_MIN   			 =  0.0;
 const float DICE_MAX   			 =  360.0;
-const float SHOULDER_ROLL_MIN    = -45.0;
-const float SHOULDER_ROLL_MAX    =  45.0;
-const float HIP_PITCH_MIN        = -45.0;
-const float HIP_PITCH_MAX        =  45.0;
-const float HIP_YAW_MIN          = -45.0;
-const float HIP_YAW_MAX          =  45.0;
-const float HIP_ROLL_MIN         = -45.0;
-const float HIP_ROLL_MAX         =  45.0;
-const float BEAK_MIN             =  0.0;
-const float BEAK_MAX             =  0.4;
-const float ELBOW_MIN            =  0.0;
-const float ELBOW_MAX            = 75.0;
-const float KNEE_MIN             =  0.0;
-const float KNEE_MAX             = 75.0;
 const float LIGHT_ANGLE_MIN		 = -360;
 const float LIGHT_ANGLE_MAX		 = 360;
-
-
-
 
 
 // ***********  FUNCTION HEADER DECLARATIONS ****************
@@ -435,10 +392,6 @@ void movePiece(int dice_roll) {
 	// Sync the UI with the 'joint_ui_data' values
 	glui_joints->sync_live();
 	glui_keyframe->sync_live();
-
-	// Let the user know the values have been loaded
-	//sprintf(msg, "You moved %d spaces!", dice_roll + 1);
-	//status->set_text(msg);
 }
 
 // there is a keyframes file containing dice rolls that is loaded
@@ -505,55 +458,6 @@ void rollDiceButton(int)
 	stopRoll();
   }
 }
-
-/*
-// Load Keyframe button handler. Called when the "load keyframe" button is pressed
-void loadKeyframeButton(int)
-{
-	// Get the keyframe ID from the UI
-	int keyframeID = joint_ui_data->getID();
-
-	// Update the 'joint_ui_data' variable with the appropriate
-	// entry from the 'keyframes' array (the list of keyframes)
-	*joint_ui_data = keyframes[keyframeID];
-
-	// Sync the UI with the 'joint_ui_data' values
-	glui_joints->sync_live();
-	glui_keyframe->sync_live();
-
-	// Let the user know the values have been loaded
-	sprintf(msg, "Status: Keyframe %d loaded successfully", keyframeID);
-	status->set_text(msg);
-}
-
-
-// Update Keyframe button handler. Called when the "update keyframe" button is pressed
-void updateKeyframeButton(int)
-{
-	///////////////////////////////////////////////////////////
-	// TODO:
-	//   Modify this function to save the UI joint values into
-	//   the appropriate keyframe entry in the keyframe list
-	//   when the user clicks on the 'Update Keyframe' button.
-	//   Refer to the 'loadKeyframeButton' function for help.
-	///////////////////////////////////////////////////////////
-
-	// Get the keyframe ID from the UI
-	int keyframeID = joint_ui_data->getID();
-
-	// Update the 'maxValidKeyframe' index variable
-	// (it will be needed when doing the interpolation)
-	maxValidKeyframe = keyframeID;
-
-	// Update the appropriate entry in the 'keyframes' array
-	// with the 'joint_ui_data' data
-	keyframes[keyframeID] = *joint_ui_data;
-
-	// Let the user know the values have been updated
-	sprintf(msg, "Status: Keyframe %d updated successfully", keyframeID);
-	status->set_text(msg);
-}
-*/
 
 // Load Keyframes From File button handler. Called when the "load keyframes from file" button is pressed
 //
@@ -625,106 +529,7 @@ void loadKeyframesFromFileButton()
 	sprintf(msg, "Status: Keyframes loaded successfully");
 	status->set_text(msg);
 }
-/*
-// Save Keyframes To File button handler. Called when the "save keyframes to file" button is pressed
-void saveKeyframesToFileButton(int)
-{
-	// Open file for writing
-	FILE* file = fopen(filenameKF, "w");
-	if( file == NULL )
-	{
-		sprintf(msg, "Status: Failed to open file %s", filenameKF);
-		status->set_text(msg);
-		return;
-	}
 
-	// Write out maxValidKeyframe first
-	fprintf(file, "%d\n", maxValidKeyframe);
-	fprintf(file, "\n");
-
-	// Now write out all keyframes in the format:
-	//    id
-	//    time
-	//    DOFs
-	//
-	for( int i = 0; i <= maxValidKeyframe; i++ )
-	{
-		fprintf(file, "%d\n", keyframes[i].getID());
-		fprintf(file, "%f\n", keyframes[i].getTime());
-
-		for( int j = 0; j < Keyframe::NUM_JOINT_ENUM; j++ )
-			fprintf(file, "%f\n", keyframes[i].getDOF(j));
-
-		fprintf(file, "\n");
-	}
-
-	// Close file
-	fclose(file);
-
-	// Let the user know the keyframes have been saved
-	sprintf(msg, "Status: Keyframes saved successfully");
-	status->set_text(msg);
-}
-
-// Animate button handler.  Called when the "animate" button is pressed.
-void animateButton(int)
-{
-  // synchronize variables that GLUT uses
-  glui_keyframe->sync_live();
-
-  // toggle animation mode and set idle function appropriately
-  if( animate_mode == 0 )
-  {
-	// start animation
-	frameRateTimer->reset();
-	animationTimer->reset();
-
-	animate_mode = 1;
-	GLUI_Master.set_glutIdleFunc(animate);
-
-	// Let the user know the animation is running
-	sprintf(msg, "Status: Animating...");
-	status->set_text(msg);
-  }
-  else
-  {
-	// stop animation
-	animate_mode = 0;
-	GLUI_Master.set_glutIdleFunc(NULL);
-
-	// Let the user know the animation has stopped
-	sprintf(msg, "Status: Animation stopped");
-	status->set_text(msg);
-  }
-}
-
-// Render Frames To File button handler. Called when the "Render Frames To File" button is pressed.
-void renderFramesToFileButton(int)
-{
-	// Calculate number of frames to generate based on dump frame rate
-	int numFrames = int(keyframes[maxValidKeyframe].getTime() * DUMP_FRAME_PER_SEC) + 1;
-
-	// Generate frames and save to file
-	frameToFile = 1;
-	for( frameNumber = 0; frameNumber < numFrames; frameNumber++ )
-	{
-		// Get the interpolated joint DOFs
-		joint_ui_data->setDOFVector( getInterpolatedJointDOFS(frameNumber * DUMP_SEC_PER_FRAME) );
-
-		// Let the user know which frame is being rendered
-		sprintf(msg, "Status: Rendering frame %d...", frameNumber);
-		status->set_text(msg);
-
-		// Render the frame
-		display();
-	}
-	frameToFile = 0;
-
-	// Let the user know how many frames were generated
-	sprintf(msg, "Status: %d frame(s) rendered to file", numFrames);
-	status->set_text(msg);
-}
-*/
 // Quit button handler.  Called when the "quit" button is pressed.
 void quitButton(int)
 {
@@ -736,7 +541,6 @@ void initGlui()
 {
 	GLUI_Panel* glui_panel;
 	GLUI_Spinner* glui_spinner;
-	GLUI_RadioGroup* glui_radio_group;
 
     GLUI_Master.set_glutIdleFunc(NULL);
 
@@ -778,28 +582,8 @@ void initGlui()
 
 	// Create controls to specify right arm
 	glui_panel = glui_joints->add_panel("Dice");
-	glui_spinner = glui_joints->add_spinner_to_panel(glui_panel, "Dice x:", GLUI_SPINNER_FLOAT, joint_ui_data->getDOFPtr(Keyframe::DICE_X));
-	glui_spinner->set_float_limits(DICE_MIN, DICE_MAX, GLUI_LIMIT_WRAP);
-	glui_spinner->set_speed(25 * SPINNER_SPEED);
-
-	glui_spinner = glui_joints->add_spinner_to_panel(glui_panel, "Dice y:", GLUI_SPINNER_FLOAT, joint_ui_data->getDOFPtr(Keyframe::DICE_Y));
-	glui_spinner->set_float_limits(DICE_MIN, DICE_MAX, GLUI_LIMIT_WRAP);
-	glui_spinner->set_speed(25 * SPINNER_SPEED);
-
 	glui_keyframe->add_button_to_panel(glui_panel, "Roll / Stop Dice", 0, rollDiceButton);
 
-
-	///////////////////////////////////////////////////////////
-	// TODO (for controlling light source position & additional
-	//      rendering styles):
-	//   Add more UI spinner elements here. Be sure to also
-	//   add the appropriate min/max range values to this
-	//   file, and to also add the appropriate enums to the
-	//   enumeration in the Keyframe class (keyframe.h).
-	///////////////////////////////////////////////////////////
-
-	//
-	// ***************************************************
 
 
 	// Create GLUI window (keyframe controls) ************
@@ -820,17 +604,6 @@ void initGlui()
 
 	glui_keyframe->add_separator();
 
-	// Add buttons to load and update keyframes
-	// Add buttons to load and save keyframes from a file
-	// Add buttons to start / stop animation and to render frames to file
-	//glui_panel = glui_keyframe->add_panel("", GLUI_PANEL_NONE);
-	//glui_keyframe->add_button_to_panel(glui_panel, "Load Keyframe", 0, loadKeyframeButton);
-	//glui_keyframe->add_button_to_panel(glui_panel, "Start / Stop Animation", 0, animateButton);
-	//glui_keyframe->add_column_to_panel(glui_panel, false);
-	//glui_keyframe->add_button_to_panel(glui_panel, "Update Keyframe", 0, updateKeyframeButton);
-	//glui_keyframe->add_button_to_panel(glui_panel, "Save Keyframes To File", 0, saveKeyframesToFileButton);
-	//glui_keyframe->add_button_to_panel(glui_panel, "Render Frames To File", 0, renderFramesToFileButton);
-
 	// Add status line
 	glui_panel = glui_keyframe->add_panel("");
 	status = glui_keyframe->add_statictext_to_panel(glui_panel, "Status: Ready");
@@ -841,29 +614,9 @@ void initGlui()
 	//
 	// ***************************************************
 
-
-	// Create GLUI window (render controls) ************
-	//
-	glui_render = GLUI_Master.create_glui("Render Control", 0, 367, Win[1]+64);
-
-	// Create control to specify the render style
-	glui_panel = glui_render->add_panel("Render Style");
-	glui_radio_group = glui_render->add_radiogroup_to_panel(glui_panel, &renderStyle);
-	glui_render->add_radiobutton_to_group(glui_radio_group, "Wireframe");
-	glui_render->add_radiobutton_to_group(glui_radio_group, "Solid");
-	glui_render->add_radiobutton_to_group(glui_radio_group, "Solid w/ outlines");
-	glui_render->add_radiobutton_to_group(glui_radio_group, "metallic");
-	glui_render->add_radiobutton_to_group(glui_radio_group, "matte");
-
-
-	//
-	// ***************************************************
-
-
 	// Tell GLUI windows which window is main graphics window
 	glui_joints->set_main_gfx_window(windowID);
 	glui_keyframe->set_main_gfx_window(windowID);
-	glui_render->set_main_gfx_window(windowID);
 }
 
 
@@ -906,12 +659,6 @@ Vector getInterpolatedJointDOFS(float time)
 	// for computing the interpolation
 	Vector p0 = keyframes[i-1].getDOFVector();
 	Vector p1 = keyframes[i].getDOFVector();
-
-	///////////////////////////////////////////////////////////
-	// TODO (animation using Catmull-Rom):
-	//   Currently the code operates using linear interpolation
-    //   Modify this function so it uses Catmull-Rom instead.
-	///////////////////////////////////////////////////////////
 
 	// Return the linearly interpolated Vector
 	return p0 * (1-alpha) + p1 * alpha;
@@ -993,13 +740,6 @@ void display(void)
 			curTime = animationTimer->elapsed();
 		}
 
-		///////////////////////////////////////////////////////////
-		// README:
-		//   This statement loads the interpolated joint DOF vector
-		//   into the global 'joint_ui_data' variable. Use the
-		//   'joint_ui_data' variable below in your model code to
-		//   drive the model for animation.
-		///////////////////////////////////////////////////////////
 		// Get the interpolated joint DOFs
 		joint_ui_data->setDOFVector( getInterpolatedJointDOFS(curTime) );
 
@@ -1008,24 +748,6 @@ void display(void)
 		glui_keyframe->sync_live();
 	}
 
-
-    ///////////////////////////////////////////////////////////
-    // TODO:
-	//   Modify this function to draw the scene.
-	//   This should include function calls that apply
-	//   the appropriate transformation matrices and render
-	//   the individual body parts.
-	//   Use the 'joint_ui_data' data structure to obtain
-	//   the joint DOFs to specify your transformations.
-	//   Sample code is provided below and demonstrates how
-	//   to access the joint DOF values. This sample code
-	//   should be replaced with your own.
-	//   Use the 'renderStyle' variable and the associated
-	//   enumeration to determine how the geometry should be
-	//   rendered.
-    ///////////////////////////////////////////////////////////
-
-	// SAMPLE CODE **********
 	//
 
 	glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
@@ -1079,18 +801,6 @@ void display(void)
 		
 
 	glPopMatrix();
-	
-	/*if (renderStyle == SOLID) drawpenguin();
-
-	if (renderStyle == WIREFRAME) drawline();
-
-	if (renderStyle == OUTLINED) drawboth();
-
-	if (renderStyle == METALLIC) drawmetal();
-
-	if (renderStyle == MATTE) drawmatte();*/
-	//
-	// SAMPLE CODE **********
 
     // Execute any GL functions that are in the queue just to be safe
     glFlush();
