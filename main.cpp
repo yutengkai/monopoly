@@ -226,7 +226,7 @@ void rollDiceButton();
 void loadKeyframesFromFileButton();
 int dice_rolling;
 int is_rolling = 1;
-int current_player = 1;
+int current_player = 0;
 
 // Image functions
 void writeFrame(char* filename, bool pgm, bool frontBuffer);
@@ -312,31 +312,85 @@ void initGlut(int argc, char** argv)
 	glutMotionFunc(motion);		// Call motion whenever mouse moves while button pressed
 }
 
+void moveX(int player, float current_x, float movement) {
+	joint_ui_data->setDOF(player, current_x + movement);
+	movePieces[current_player].setDOF(player, current_x + movement);
+	keyframes[0].setDOF(player, current_x + movement);
+	keyframes[1].setDOF(player, current_x + movement);
+}
+
+void moveY(int player, float current_y, float movement) {
+	joint_ui_data->setDOF(player, current_y + movement);
+	movePieces[current_player].setDOF(player, current_y + movement);
+	keyframes[0].setDOF(player, current_y + movement);
+	keyframes[1].setDOF(player, current_y + movement);
+}
+
 void movePiece(int dice_roll) {
 	float num_spaces = (dice_roll + 1) * 0.64f;
 
-	// set current_player's new position and advance to next player's turn
-	if (current_player == 1) {
-		float current_space = movePieces[0].getDOF(Keyframe::PLAYER1_X);
-		joint_ui_data->setDOF(Keyframe::PLAYER1_X, current_space - num_spaces);
-		movePieces[0].setDOF(Keyframe::PLAYER1_X, current_space - num_spaces);
-		current_player++;
-	} else if (current_player == 2) {
-		float current_space = movePieces[1].getDOF(Keyframe::PLAYER2_X);
-		joint_ui_data->setDOF(Keyframe::PLAYER2_X, current_space - num_spaces);
-		movePieces[1].setDOF(Keyframe::PLAYER2_X, current_space - num_spaces);
-		current_player++;
-	} else if (current_player == 3) {
-		float current_space = movePieces[2].getDOF(Keyframe::PLAYER3_X);
-		joint_ui_data->setDOF(Keyframe::PLAYER3_X, current_space - num_spaces);
-		movePieces[2].setDOF(Keyframe::PLAYER3_X, current_space - num_spaces);
-		current_player++;
-	} else if (current_player == 4) {
-		float current_space = movePieces[3].getDOF(Keyframe::PLAYER4_X);
-		joint_ui_data->setDOF(Keyframe::PLAYER4_X, current_space - num_spaces);
-		movePieces[3].setDOF(Keyframe::PLAYER4_X, current_space - num_spaces);
-		current_player = 1;
+	int playerx = current_player == 0 ? Keyframe::PLAYER1_X : Keyframe::PLAYER2_X;
+	int playery = current_player == 0 ? Keyframe::PLAYER1_Y : Keyframe::PLAYER2_Y;
+
+	float current_x = movePieces[current_player].getDOF(playerx);
+	float current_y = movePieces[current_player].getDOF(playery);
+	float x_movement = 0.0;
+	float y_movement = 0.0;
+
+	printf("player %d \n", current_player + 1);
+	printf("origin X: %f \n", current_x);
+	printf("origin Y: %f \n", current_y);
+	
+	for (float i=0.0; i<num_spaces; i=i+0.64 ) {
+		if ((current_x + x_movement) <= 0.0f && (current_x + x_movement) > -6.4f) {
+			if (current_y > 0.0f) {
+				//if ((current_x + x_movement) <= -6.4f) {
+					// on corner square. add an additional x and y movement to cover its size
+					//x_movement = x_movement + 0.64;
+					//y_movement = y_movement - 0.64;
+				//} else {
+					//x_movement = x_movement + 0.64;
+				//}
+			} else {
+				if ((current_x + x_movement) < -5.12f) {
+					// on last square in the row.
+					// move two spots left and one spot up
+					x_movement = x_movement - 1.28;
+					y_movement = y_movement + 0.64;
+				} else {
+					x_movement = x_movement - 0.64;
+				}
+			}
+		} else if ((current_y + y_movement) > 0.0f && (current_y + y_movement) < 7.04f) {
+			if (current_x < 0.0f) {
+				if ((current_y + y_movement) > 5.76f) {
+					// on last square in the row.
+					// move two spots up and one spot right
+					y_movement = y_movement + 1.28;
+					x_movement = x_movement + 0.64;
+				} else {
+					y_movement = y_movement + 0.64;
+				}
+			} else {
+				/*if ((current_y + y_movement) >= 7.04f) {
+					// on corner square
+					x_movement = x_movement + 0.64;
+					y_movement = y_movement + 0.64;
+				} else {
+					y_movement = y_movement + 0.64;
+				}*/
+			}
+		}
 	}
+	
+	printf("total x mov: %f \n", x_movement);
+	printf("total y mov: %f \n", y_movement);
+
+
+	moveX(playerx, current_x, x_movement);
+	moveY(playery, current_y, y_movement);
+
+	current_player = current_player == 0 ? 1 : 0;
 	
 	// Sync the UI with the 'joint_ui_data' values
 	glui_joints->sync_live();
@@ -3325,14 +3379,14 @@ void houses()
 			house();
 			glTranslatef(0.64, 0, 0);
 
-			glTranslatef(joint_ui_data->getDOF(Keyframe::PLAYER1_X), 0.0, 0.0);
+			glTranslatef(joint_ui_data->getDOF(Keyframe::PLAYER1_X), joint_ui_data->getDOF(Keyframe::PLAYER1_Y), 0.0);
 			mario();
-			glTranslatef(-joint_ui_data->getDOF(Keyframe::PLAYER1_X), 0.0, 0.0);
-
-			glTranslatef(joint_ui_data->getDOF(Keyframe::PLAYER2_X), 0.0, 0.0);
+			glTranslatef(-joint_ui_data->getDOF(Keyframe::PLAYER1_X), -joint_ui_data->getDOF(Keyframe::PLAYER1_Y), 0.0);
+			
+			glTranslatef(joint_ui_data->getDOF(Keyframe::PLAYER2_X), joint_ui_data->getDOF(Keyframe::PLAYER2_Y), 0.0);
 			pikachu();
-			glTranslatef(-joint_ui_data->getDOF(Keyframe::PLAYER2_X), 0.0, 0.0);
-		
+			glTranslatef(-joint_ui_data->getDOF(Keyframe::PLAYER2_X), -joint_ui_data->getDOF(Keyframe::PLAYER2_Y), 0.0);
+
 		glPopMatrix();
 
 		glPushMatrix();
