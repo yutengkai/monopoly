@@ -379,6 +379,18 @@ void stopRoll() {
 // roll dice button handler.  Called when the "animate" button is pressed.
 void rollDiceButton(int)
 {
+	keyframes[0].setDOF(Keyframe::ROOT_ROTATE_X, joint_ui_data->getDOF(Keyframe::ROOT_ROTATE_X));
+	keyframes[0].setDOF(Keyframe::ROOT_ROTATE_Y, joint_ui_data->getDOF(Keyframe::ROOT_ROTATE_Y));
+	keyframes[0].setDOF(Keyframe::ROOT_ROTATE_Z, joint_ui_data->getDOF(Keyframe::ROOT_ROTATE_Z));
+	keyframes[1].setDOF(Keyframe::ROOT_ROTATE_X, joint_ui_data->getDOF(Keyframe::ROOT_ROTATE_X));
+	keyframes[1].setDOF(Keyframe::ROOT_ROTATE_Y, joint_ui_data->getDOF(Keyframe::ROOT_ROTATE_Y));
+	keyframes[1].setDOF(Keyframe::ROOT_ROTATE_Z, joint_ui_data->getDOF(Keyframe::ROOT_ROTATE_Z));
+	keyframes[0].setDOF(Keyframe::ROOT_TRANSLATE_X, joint_ui_data->getDOF(Keyframe::ROOT_TRANSLATE_X));
+	keyframes[0].setDOF(Keyframe::ROOT_TRANSLATE_Y, joint_ui_data->getDOF(Keyframe::ROOT_TRANSLATE_Y));
+	keyframes[0].setDOF(Keyframe::ROOT_TRANSLATE_Z, joint_ui_data->getDOF(Keyframe::ROOT_TRANSLATE_Z));
+	keyframes[1].setDOF(Keyframe::ROOT_TRANSLATE_X, joint_ui_data->getDOF(Keyframe::ROOT_TRANSLATE_X));
+	keyframes[1].setDOF(Keyframe::ROOT_TRANSLATE_Y, joint_ui_data->getDOF(Keyframe::ROOT_TRANSLATE_Y));
+	keyframes[1].setDOF(Keyframe::ROOT_TRANSLATE_Z, joint_ui_data->getDOF(Keyframe::ROOT_TRANSLATE_Z));
   // synchronize variables that GLUT uses
   glui_keyframe->sync_live();
 
