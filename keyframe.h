@@ -37,7 +37,7 @@ public:
 		   PLAYER3_X, PLAYER3_Y,
 		   PLAYER4_X, PLAYER4_Y,
 		   DICE_X, DICE_Y, 
-		   LIGHT_ANGLE,
+		   SUN_ANGLE,
 		   NUM_JOINT_ENUM };
 
 	// constructor

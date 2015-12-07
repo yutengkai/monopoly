@@ -1,112 +1,100 @@
-REPORT
+The monopoly game report.
 
-Step 1 -- drawing each part of the penguin:
+Contributors : 
+	Yu Tengkai,
+	Andreas Kyprianou
 
-I did not type the code of vertices' locatios line by line.
+Part 1 -- Introduction to the game:
 
-Instead, to draw the penguin fast, I made up this python file to help me generating code.
+This is a standard monopoly chess game board.
 
-----python code----
+We have:
+	- the main board divided into several blocks.
+	- small houses into different colors.
+	- condos representing the big companies.
+	- the “Question” (?) for the chance card drawing
+	- the jewellery chest
+	- a “GO” sign for the starting block.
+	- the jail
 
-		z = 0.5
+There are two chess characters:
+	- Mario
+	- Pikachu
 
-		luf = [-0.5,  0.05, z]
-		ldf = [-0.5, 0, z]
-		ruf = [0, 0.1, z]
-		rdf = [0, 0, z]
+The users can let the dice roll to a random number,
+then the charaters will move automatically.
 
-		lub = luf[:]
-		lub[2] = -lub[2]
+(We cannot implement all the feature of the real game
+due to the time limit.)
 
-		ldb = ldf[:]
-		ldb[2] = -ldb[2]
+Part 2 -- Where we come up the idea.
 
-		rub = ruf[:]
-		rub[2] = -rub[2]
+When we solving the assignment 2 (individually),
+we found some trick way to draw the 3D graph in open GL,
+which can make fancy characters in a fast way
+(like the Pikachu only cost us five to ten minute to draw).
 
-		rdb = rdf[:]
-		rdb[2] = -rdb[2]
+This tech (or trick) result in our decision to build a well
+designed 3D world in our final project.
 
-		print("// draw front face")
-		print("glNormal3f(0, 0, 1);")
-		print("glVertex3f" + str(tuple(ldf))+ ";")
-		print("glVertex3f" + str(tuple(rdf))+ ";")
-		print("glVertex3f" + str(tuple(ruf))+ ";")
-		print("glVertex3f" + str(tuple(luf))+ ";")
-		print("// draw back face")
-		print("glNormal3f(0, 0, -1);")
-		print("glVertex3f" + str(tuple(rdb))+ ";")
-		print("glVertex3f" + str(tuple(ldb))+ ";")
-		print("glVertex3f" + str(tuple(lub))+ ";")
-		print("glVertex3f" + str(tuple(rub))+ ";")
-		print("// draw left face")
-		print("glNormal3f(-1, 0, 0);")
-		print("glVertex3f" + str(tuple(ldb))+ ";")
-		print("glVertex3f" + str(tuple(ldf))+ ";")
-		print("glVertex3f" + str(tuple(luf))+ ";")
-		print("glVertex3f" + str(tuple(lub))+ ";")
-		print("// draw right face")
-		print("glNormal3f(1, 0, 0);")
-		print("glVertex3f" + str(tuple(rdf))+ ";")
-		print("glVertex3f" + str(tuple(rdb))+ ";")
-		print("glVertex3f" + str(tuple(rub))+ ";")
-		print("glVertex3f" + str(tuple(ruf))+ ";")
-		print("// draw top")
-		print("glNormal3f(0, 1, 0);")
-		print("glVertex3f" + str(tuple(luf))+ ";")
-		print("glVertex3f" + str(tuple(ruf))+ ";")
-		print("glVertex3f" + str(tuple(rub))+ ";")
-		print("glVertex3f" + str(tuple(lub))+ ";")
-		print("// draw bottom")
-		print("glNormal3f(0, -1, 0);")
-		print("glVertex3f" + str(tuple(ldb))+ ";")
-		print("glVertex3f" + str(tuple(rdb))+ ";")
-		print("glVertex3f" + str(tuple(rdf))+ ";")
-		print("glVertex3f" + str(tuple(ldf))+ ";")
+The idea of actually making the monopoly game is by 
+one of our group members girlfriend.
 
-----python code finish----
+Yu’s strength is model building while Andreas is a genius of 
+frame works and files planing.
 
-What I do is only typing in how I want it looks like in the xy-plane, then the python will help me to generate the code in openGL.
+We believe this project will let we both contribute
+equally and end up with a good representation of the monopoly
+game.
 
-Step 2 -- combine each part in the penguin:
+Part 3 -- Modeling:
 
-I put the body into graph first.
+Here come the trick how we build the 3D models.
 
-==> then move to the left side fo the body and draw the left arm.
-	
-	==> move to the bottom to the arm and draw the hand.
+Since you can tell the actual function of each model in the main.cpp
+is super long (thousands of lines of code), we did not do the real 
+design in the cpp files, but in the python file instead.
 
-==> do the same thing to the right wing.
+The first version of the cpp code generating file is the 
+“gene.py” which is Yu’s tool in the assignment two.
 
-==> move to the top of the body and draw the head.
+But that turn to be weak in this big project, so we made 
+the second python file “lego.py”. 
+(we were making a lego toy simulator but we gave up).
 
-	==> move to the front of the head and draw both part of the mouth.
-		(note that my starting point of both part of the mouth are the same. It is the bottom of the upper and the top of the lower.)
+“lego.py” allows us we build the simple objects like the 
+house on the board, but it costs a lot of lines to init how
+the model will look like and it is hard to maintain.
 
-==> move to the bottom of the body and draw the both legs same as drawing the arms.
+The final tool we used to build fancy characters like 
+Mario, Pikachu and the chest is the “3d.py”.
 
-(Note for each arrow I mean pushing a matrix and parallel arrows means different matrices)
+This allows we draw the 8 bit graph in a super fast way 
+and represent it into a 3D version.
 
-Step 3 -- rendering:
+“3d.py” transform each pixel of the 2D graph into a 3D bar,
+and the drawing function makes us able to easily define the
+colors and the size of our 3D object, and it is super easy 
+to maintain.
 
-I use if statement to pick the way I need to rend the penguin.
+Because the limit of the block size we can only have 2
+characters moving on the board.
+However if we want we can make much more (Nintendo)
+characters in our game.
 
-I write individual functions for each way of rend.
+(Note the best part of these python function is that they handels
+the normal vectors for all faces, which is super convenient 
+for continuing lighting control.)
 
-In the first three render function I disabled the light.
+Part 4 -- Lighting
 
-The first case I used the function glPolygonModel and set it as GL_LINE.
+The light of the “sun” travels above the board.
 
-In the second, forthand fifth case I set it as GL_FILL.
+It changes every time we stop rolling the dice.
 
-Step 4 -- lighting
+We keep updating the variable sun_angle and use it to change
+both frame and the joint_ui_data.
 
-I found the code about the lighting in the lecture slide.
-
-Then I found a cololr table about the RGBA by google.
-
-http://devernay.free.fr/cours/opengl/materials.html
-
-Step 5 -- keyframe
-
-Unfortunatly, I did not finish this part.
+Each time we stop the dice we rotate the angle by 0.1 of PI,
+but when the sun_angle becomes 1 we clears it since we do
+not need the view of the “town” in the night.

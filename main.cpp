@@ -185,6 +185,8 @@ const float LIGHT_ANGLE_MAX		 = 360;
 
 
 
+
+
 // ***********  FUNCTION HEADER DECLARATIONS ****************
 
 
@@ -224,9 +226,11 @@ void pikachu();
 void chest();
 void rollDiceButton();
 void loadKeyframesFromFileButton();
+void sun_moving();
 int dice_rolling;
 int is_rolling = 1;
 int current_player = 0;
+float sun_angle = 0;
 
 // Image functions
 void writeFrame(char* filename, bool pgm, bool frontBuffer);
@@ -447,6 +451,11 @@ void stopRoll() {
 	// entry from the 'keyframes' array (the list of keyframes)
 	joint_ui_data->setDOF(Keyframe::DICE_X, diceValues[dice_roll].getDOF(Keyframe::DICE_X));
 	joint_ui_data->setDOF(Keyframe::DICE_Y, diceValues[dice_roll].getDOF(Keyframe::DICE_Y));
+	joint_ui_data->setDOF(Keyframe::SUN_ANGLE, sun_angle);
+	keyframes[0].setDOF(Keyframe::SUN_ANGLE, sun_angle);
+	keyframes[1].setDOF(Keyframe::SUN_ANGLE, sun_angle);
+
+	sun_angle = (sun_angle + 0.1)/1;
 
 	// Sync the UI with the 'joint_ui_data' values
 	glui_joints->sync_live();
@@ -461,6 +470,18 @@ void stopRoll() {
 // roll dice button handler.  Called when the "animate" button is pressed.
 void rollDiceButton(int)
 {
+	keyframes[0].setDOF(Keyframe::ROOT_ROTATE_X, joint_ui_data->getDOF(Keyframe::ROOT_ROTATE_X));
+	keyframes[0].setDOF(Keyframe::ROOT_ROTATE_Y, joint_ui_data->getDOF(Keyframe::ROOT_ROTATE_Y));
+	keyframes[0].setDOF(Keyframe::ROOT_ROTATE_Z, joint_ui_data->getDOF(Keyframe::ROOT_ROTATE_Z));
+	keyframes[1].setDOF(Keyframe::ROOT_ROTATE_X, joint_ui_data->getDOF(Keyframe::ROOT_ROTATE_X));
+	keyframes[1].setDOF(Keyframe::ROOT_ROTATE_Y, joint_ui_data->getDOF(Keyframe::ROOT_ROTATE_Y));
+	keyframes[1].setDOF(Keyframe::ROOT_ROTATE_Z, joint_ui_data->getDOF(Keyframe::ROOT_ROTATE_Z));
+	keyframes[0].setDOF(Keyframe::ROOT_TRANSLATE_X, joint_ui_data->getDOF(Keyframe::ROOT_TRANSLATE_X));
+	keyframes[0].setDOF(Keyframe::ROOT_TRANSLATE_Y, joint_ui_data->getDOF(Keyframe::ROOT_TRANSLATE_Y));
+	keyframes[0].setDOF(Keyframe::ROOT_TRANSLATE_Z, joint_ui_data->getDOF(Keyframe::ROOT_TRANSLATE_Z));
+	keyframes[1].setDOF(Keyframe::ROOT_TRANSLATE_X, joint_ui_data->getDOF(Keyframe::ROOT_TRANSLATE_X));
+	keyframes[1].setDOF(Keyframe::ROOT_TRANSLATE_Y, joint_ui_data->getDOF(Keyframe::ROOT_TRANSLATE_Y));
+	keyframes[1].setDOF(Keyframe::ROOT_TRANSLATE_Z, joint_ui_data->getDOF(Keyframe::ROOT_TRANSLATE_Z));
   // synchronize variables that GLUT uses
   glui_keyframe->sync_live();
 
@@ -834,11 +855,6 @@ void initGlui()
 	glui_render->add_radiobutton_to_group(glui_radio_group, "metallic");
 	glui_render->add_radiobutton_to_group(glui_radio_group, "matte");
 
-	//light 
-	glui_panel = glui_render->add_panel("Light");
-	glui_spinner = glui_joints->add_spinner_to_panel(glui_panel, "angle:", GLUI_SPINNER_FLOAT, joint_ui_data->getDOFPtr(Keyframe::LIGHT_ANGLE));
-	glui_spinner->set_float_limits(LIGHT_ANGLE_MIN, LIGHT_ANGLE_MAX, GLUI_LIMIT_CLAMP);
-	glui_spinner->set_speed(SPINNER_SPEED);
 
 	//
 	// ***************************************************
@@ -1011,6 +1027,8 @@ void display(void)
 
 	// SAMPLE CODE **********
 	//
+
+	glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
 	glPushMatrix(); 
 
 		// setup transformation for body part
@@ -1026,7 +1044,7 @@ void display(void)
 		//search
 		// draw body part
 		
-		
+		sun_moving();
 		glPushMatrix();
 		glTranslatef(0.0, 0.0, -2.0);
 		mono_table();
@@ -1302,6 +1320,38 @@ void mono_table()
 	glVertex3f(4.16, -4.16, 0);
 	glVertex3f(-4.16, -4.16, 0);
 	glEnd();
+}
+
+void sun_moving()
+{
+	glEnable(GL_LIGHTING);
+	
+	// set global lighting
+	const GLfloat ambient[4] = {0.1, 0.1, 0.1, 1.0};
+	const GLfloat diffuse[4] = {0.8, 0.8, 0.8, 1.0};
+	const GLfloat specular[4] = {0.8, 0.8, 0.8, 1.0};
+
+	// calculate light position
+	// the light travels around the penguin in a circular pattern
+	// based on a radius of 25.0 and parameter LIGHT_POSITION
+	float light_pos_x = 20.0 * cos(joint_ui_data->getDOF(Keyframe::SUN_ANGLE) * PI);
+	float light_pos_y = 15.0 * cos(joint_ui_data->getDOF(Keyframe::SUN_ANGLE) * PI);
+	float light_pos_z = 25.0 * sin(joint_ui_data->getDOF(Keyframe::SUN_ANGLE) * PI);
+	GLfloat position[4] = {light_pos_x, light_pos_y, light_pos_z, 1.0};
+	glLightfv(GL_LIGHT0, GL_AMBIENT, ambient);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuse);
+	glLightfv(GL_LIGHT0, GL_SPECULAR, specular);
+	glLightfv(GL_LIGHT0, GL_POSITION, position);
+
+	glEnable(GL_LIGHT0);
+
+	// Specify material properties
+	glEnable( GL_COLOR_MATERIAL );
+	glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
+
+
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	
 }
 
 void table_bar_h_l()
