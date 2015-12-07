@@ -297,83 +297,65 @@ void movePiece(int dice_roll) {
 	float current_y = movePieces[current_player].getDOF(playery);
 	float x_movement = 0.0;
 	float y_movement = 0.0;
-
-	printf("player %d \n", current_player + 1);
-	printf("origin X: %f \n", current_x);
-	printf("origin Y: %f \n", current_y);
 	
 	for (float i=0.0; i<num_spaces; i=i+0.64 ) {
 		if ((current_x + x_movement) < 0.64f && (current_x + x_movement) > -7.04f) {
 			if (current_y > 0.0f) {
 				if ((current_x + x_movement) > -0.64f) {
-					printf("corner square: top right\n");
 					// on corner square
 					// move one spot right and one spot down
 					x_movement = x_movement + 0.64;
 					y_movement = y_movement - 0.64;
 				} else if ((current_x + x_movement) > -1.28f) {
-					printf("second last: top right\n");
 					// on second last square in the row
 					// move two spots right and one spot down
 					x_movement = x_movement + 1.28;
 					y_movement = y_movement - 0.64;
 				} else {
-					printf("along the top\n");
 					x_movement = x_movement + 0.64;
 				}
 			} else {
 				if ((current_x + x_movement) < -5.76f) {
-					printf("corner square: bottom left\n");
 					// on corner square
 					// move one spot left and one spot up
 					x_movement = x_movement - 0.64;
 					y_movement = y_movement + 0.64;
 				} else if ((current_x + x_movement) < -5.12f) {
-					printf("second last: bottom left\n");
 					// on second last square in the row.
 					// move two spots left and one spot up
 					x_movement = x_movement - 1.28;
 					y_movement = y_movement + 0.64;
 				} else {
-					printf("along the bottom\n");
 					x_movement = x_movement - 0.64;
 				}
 			}
 		} else if ((current_y + y_movement) > 0.0f && (current_y + y_movement) < 7.68f) {
 			if (current_x < 0.0f) {
 				if ((current_y + y_movement) > 6.4f) {
-					printf("current x: %f", current_x);
-					printf("current y: %f", current_y);
-					printf("corner square: top left\n");
 					// on corner square.
 					// move one spot up and one spot right
 					y_movement = y_movement + 0.64;
 					x_movement = x_movement + 0.64;
 				} else if ((current_y + y_movement) > 5.76f) {
-					printf("second last: top left\n");
 					// on last square in the row.
 					// move two spots up and one spot right
 					y_movement = y_movement + 1.28;
 					x_movement = x_movement + 0.64;
 				} else {
-					printf("along the left\n");
 					y_movement = y_movement + 0.64;
 				}
 			} else {
 				if ((current_y + y_movement) < 1.28f) {
-					printf("corner square: bottom right\n");
 					// on corner square.
 					// move down one and left one
 					x_movement = x_movement - 0.64;
 					y_movement = y_movement - 0.64;
 				} else if ((current_y + y_movement) < 1.92f) {
-					printf("second last: bottom right\n");
 					// on second last square
 					// move down two and left one
 					x_movement = x_movement - 0.64;
 					y_movement = y_movement - 1.28;
 				} else {
-					printf("along the right\n");
 					y_movement = y_movement - 0.64;
 				}
 			}
