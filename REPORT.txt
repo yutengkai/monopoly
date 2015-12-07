@@ -85,3 +85,16 @@ characters in our game.
 (Note the best part of these python function is that they handels
 the normal vectors for all faces, which is super convenient 
 for continuing lighting control.)
+
+Part 4 -- Lighting
+
+The light of the “sun” travels above the board.
+
+It changes every time we stop rolling the dice.
+
+We keep updating the variable sun_angle and use it to change
+both frame and the joint_ui_data.
+
+Each time we stop the dice we rotate the angle by 0.1 of PI,
+but when the sun_angle becomes 1 we clears it since we do
+not need the view of the “town” in the night.
